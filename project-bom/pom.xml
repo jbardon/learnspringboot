@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>learnspringboot</groupId>
+    <artifactId>project-bom</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+
+    <packaging>pom</packaging>
+
+    <name>Project BOM</name>
+    <description>Defined all dependencies for the project</description>
+
+    <properties>
+        <version.core>0.0.1-SNAPSHOT</version.core>
+    </properties>
+
+    <!--
+        Define all artifact in the project
+        Make them available with a specific version
+        So other part of the project use the same version
+    -->
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>learnspringboot</groupId>
+                <artifactId>core-api</artifactId>
+                <version>${version.core}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+</project>

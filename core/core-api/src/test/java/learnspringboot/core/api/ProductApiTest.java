@@ -1,4 +1,4 @@
-package learnspringboot.coreapi;
+package learnspringboot.core.api;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

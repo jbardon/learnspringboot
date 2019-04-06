@@ -1,4 +1,4 @@
-package learnspringboot.coreapi;
+package learnspringboot.core.api;
 
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,6 +12,7 @@ import static org.springframework.web.bind.annotation.RequestMethod.GET;
 // ProductWs for WebService is also a suitable name
 public class ProductApi {
 
+    // GET http://localhost:8080/product
     @RequestMapping(method = GET, path = "")
     public String findAll () {
         return "findAll";
