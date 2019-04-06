@@ -34,5 +34,9 @@
 
     <modules>
         <module>core-api</module>
+        <module>core-dto</module>
+        <module>core-service</module>
+        <module>core-dao</module>
+        <module>core-domain</module>
     </modules>
 </project>

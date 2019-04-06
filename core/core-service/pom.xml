@@ -9,25 +9,27 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <!-- core-rest is also a legitimate name-->
-    <artifactId>core-api</artifactId>
+    <artifactId>core-service</artifactId>
 
-    <name>Core API</name>
-    <description>Project core (API)</description>
+    <name>Core Services</name>
+    <description>Project core (services)</description>
+
+    <properties>
+        <spring-boot.repackage.skip>true</spring-boot.repackage.skip>
+    </properties>
 
     <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-
         <dependency>
             <groupId>learnspringboot</groupId>
             <artifactId>core-dto</artifactId>
         </dependency>
         <dependency>
             <groupId>learnspringboot</groupId>
-            <artifactId>core-service</artifactId>
+            <artifactId>core-domain</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>learnspringboot</groupId>
+            <artifactId>core-dao</artifactId>
         </dependency>
     </dependencies>
 </project>

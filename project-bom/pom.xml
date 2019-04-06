@@ -28,6 +28,26 @@
                 <artifactId>core-api</artifactId>
                 <version>${version.core}</version>
             </dependency>
+            <dependency>
+                <groupId>learnspringboot</groupId>
+                <artifactId>core-dto</artifactId>
+                <version>${version.core}</version>
+            </dependency>
+            <dependency>
+                <groupId>learnspringboot</groupId>
+                <artifactId>core-service</artifactId>
+                <version>${version.core}</version>
+            </dependency>
+            <dependency>
+                <groupId>learnspringboot</groupId>
+                <artifactId>core-domain</artifactId>
+                <version>${version.core}</version>
+            </dependency>
+            <dependency>
+                <groupId>learnspringboot</groupId>
+                <artifactId>core-dao</artifactId>
+                <version>${version.core}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 </project>

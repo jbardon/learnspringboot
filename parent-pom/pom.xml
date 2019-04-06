@@ -31,12 +31,6 @@
 
     <dependencyManagement>
         <dependencies>
-            <dependency>
-                <groupId>org.projectlombok</groupId>
-                <artifactId>lombok</artifactId>
-                <version>${version.lombok}</version>
-            </dependency>
-
             <!-- Local database to avoid installing a real DB -->
             <dependency>
                 <groupId>com.h2database</groupId>
@@ -73,6 +67,12 @@
         </dependency>
 
         <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${version.lombok}</version>
+        </dependency>
+
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
@@ -85,6 +85,8 @@
         This is because integration tests are expensive to run
 
         Gives access to commands such as: mvn spring-boot:run
+        - mvn spring-boot:help -Ddetail=true
+        - mvn spring-boot:run -Dspring-boot.run.arguments=- -debug
     -->
     <build>
         <plugins>
