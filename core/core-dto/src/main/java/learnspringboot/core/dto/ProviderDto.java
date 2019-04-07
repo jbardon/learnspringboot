@@ -7,13 +7,9 @@ import java.util.List;
 
 @Getter
 @Setter
-public class ProductDto {
+public class ProviderDto {
 
     private Integer id;
 
-    private String name;
-
-    private Double price;
-
-    private List<ReviewDto> reviews;
+    private List<ProductDto> products;
 }

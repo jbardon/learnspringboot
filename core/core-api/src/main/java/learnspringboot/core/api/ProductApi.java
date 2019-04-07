@@ -2,6 +2,7 @@ package learnspringboot.core.api;
 
 import learnspringboot.core.dto.ProductDto;
 import learnspringboot.core.dto.criteria.ProductSearchCriteria;
+import learnspringboot.core.service.ProductService;
 import learnspringboot.core.service.impl.ProductServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -20,10 +21,10 @@ import static org.springframework.web.bind.annotation.RequestMethod.GET;
 // ProductWs for WebService is also a suitable name
 public class ProductApi {
 
-    private final ProductServiceImpl service;
+    private final ProductService service;
 
     @Autowired
-    public ProductApi(final ProductServiceImpl service) {
+    public ProductApi(final ProductService service) {
         this.service = service;
     }
 

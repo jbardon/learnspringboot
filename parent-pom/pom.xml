@@ -27,6 +27,9 @@
         <java.version>1.8</java.version>
         <version.lombok>1.18.6</version.lombok>
         <version.h2>1.4.199</version.h2>
+        <version.querydsl>4.2.1</version.querydsl>
+
+        <version.plugin.querydsl>1.1.3</version.plugin.querydsl>
     </properties>
 
     <dependencyManagement>
@@ -37,6 +40,17 @@
                 <artifactId>h2</artifactId>
                 <version>${version.h2}</version>
                 <scope>runtime</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.querydsl</groupId>
+                <artifactId>querydsl-apt</artifactId>
+                <version>${version.querydsl}</version>
+                <scope>provided</scope> <!-- Not include in JAR -->
+            </dependency>
+            <dependency>
+                <groupId>com.querydsl</groupId>
+                <artifactId>querydsl-jpa</artifactId>
+                <version>${version.querydsl}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -89,6 +103,27 @@
         - mvn spring-boot:run -Dspring-boot.run.arguments=- -debug
     -->
     <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>com.mysema.maven</groupId>
+                    <artifactId>apt-maven-plugin</artifactId>
+                    <version>${version.plugin.querydsl}</version>
+                    <executions>
+                        <execution>
+                            <goals>
+                                <goal>process</goal>
+                            </goals>
+                            <configuration>
+                                <outputDirectory>target/generated-sources/java</outputDirectory>
+                                <processor>com.querydsl.apt.jpa.JPAAnnotationProcessor</processor>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>

@@ -31,5 +31,10 @@
             <groupId>learnspringboot</groupId>
             <artifactId>core-dao</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>com.querydsl</groupId>
+            <artifactId>querydsl-core</artifactId>
+        </dependency>
     </dependencies>
 </project>

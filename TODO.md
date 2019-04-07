@@ -1,0 +1,8 @@
+- Code maker service
+- Enumerable string in domain
+- Postload in services
+- ManyToMany relationship
+- Eureka
+- Feign client
+- Properties classes
+- Configuration

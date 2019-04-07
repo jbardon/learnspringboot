@@ -2,6 +2,7 @@ package learnspringboot.core.dao;
 
 import learnspringboot.core.domain.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.querydsl.QuerydslPredicateExecutor;
 import org.springframework.stereotype.Repository;
 
 /*
@@ -11,7 +12,8 @@ import org.springframework.stereotype.Repository;
 @Repository
 // CrudRepository ??
 public interface ProductRepository
-        extends JpaRepository<Product, Integer> // Match @Id attribute type in Product entity
+        extends JpaRepository<Product, Integer>,
+                QuerydslPredicateExecutor<Product> // Match @Id attribute type in Product entity
 {
     // JDBC
     // SpringData -> implements the repository pattern

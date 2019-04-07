@@ -16,4 +16,6 @@ public class ProductSearchCriteria {
     public Double minPrice;
 
     public Double maxPrice;
+
+    public List<Integer> provider;
 }
