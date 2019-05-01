@@ -1,6 +1,5 @@
-package learnspringboot.core.service.converter;
+package learnspringboot.core.service.converter.utils;
 
-import learnspringboot.core.dto.OrderDto;
 import learnspringboot.core.dto.ProductDto;
 import lombok.Getter;
 import lombok.Setter;

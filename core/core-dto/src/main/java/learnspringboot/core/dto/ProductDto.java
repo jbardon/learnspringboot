@@ -13,7 +13,7 @@ public class ProductDto {
 
     private String name;
 
-    private Double price;
+    private String make;
 
-    private List<ReviewDto> reviews;
+    private Double price;
 }

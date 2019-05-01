@@ -11,7 +11,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
    - @ComponentScan (ex: @ComponentScan(basePackages = {"outside.package"}))
 
    This file is in learnspringboot.core and not in the api subpackage
-   because to enable the component scan for all dependencies
+   to enable component scan for all classes under learnspring.core package
 */
 @SpringBootApplication
 public class CoreApiApplication {

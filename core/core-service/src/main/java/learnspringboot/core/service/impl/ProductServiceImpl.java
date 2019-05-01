@@ -1,8 +1,6 @@
 package learnspringboot.core.service.impl;
 
-import com.querydsl.core.types.Predicate;
 import com.querydsl.core.types.dsl.BooleanExpression;
-import com.querydsl.core.types.dsl.BooleanPath;
 import com.querydsl.core.types.dsl.Expressions;
 import learnspringboot.core.dao.ProductRepository;
 import learnspringboot.core.domain.Product;
@@ -10,9 +8,8 @@ import learnspringboot.core.dto.ProductDto;
 import learnspringboot.core.dto.criteria.ProductSearchCriteria;
 import learnspringboot.core.service.ProductService;
 import learnspringboot.core.service.converter.ProductConverter;
-import learnspringboot.core.service.converter.View;
+import learnspringboot.core.service.converter.utils.View;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
@@ -64,8 +61,22 @@ public class ProductServiceImpl implements ProductService {
 
         BooleanExpression predicate = Expressions.TRUE;
 
-        if (CollectionUtils.isEmpty(criteria.getProvider())) {
-           predicate.and(product.supplierId.in(criteria.getProvider()));
+        if (CollectionUtils.isEmpty(criteria.getMake())) {
+           predicate.and(product.make.in(criteria.getMake()));
+        }
+
+        if (CollectionUtils.isEmpty(criteria.getName())) {
+            predicate.and(product.name.in(criteria.getMake()));
+        }
+
+        Double minPrice = criteria.getMinPrice();
+        if (minPrice != null && minPrice >= 0) {
+            predicate.and(product.price.goe(minPrice));
+        }
+
+        Double maxPrice = criteria.getMaxPrice();
+        if (maxPrice != null && maxPrice >= 0 && maxPrice <= Integer.MAX_VALUE) {
+            predicate.and(product.price.loe(maxPrice));
         }
 
         List<Product> products = StreamSupport

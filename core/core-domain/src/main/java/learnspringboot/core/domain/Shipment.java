@@ -7,16 +7,22 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+import java.util.Date;
+
 import static javax.persistence.GenerationType.AUTO;
 
 @Entity
 @Getter
 @Setter
-public class Provider {
+public class Shipment {
 
     @Id
     @GeneratedValue(strategy = AUTO)
     private Integer id;
 
-    private String name;
+    private String companyName;
+
+    private Date beginDate;
+
+    private Date endDate;
 }

@@ -11,5 +11,9 @@ public class OrderDto {
 
     private Integer id;
 
+    private String status;
+
     private List<ProductDto> products;
+
+    private CustomerDto customer;
 }

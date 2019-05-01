@@ -1,13 +1,14 @@
 package learnspringboot.core.domain;
 
+import learnspringboot.core.domain.enums.OrderStatus;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
+import java.util.List;
+
+import static javax.persistence.EnumType.STRING;
 import static javax.persistence.GenerationType.AUTO;
 
 @Entity
@@ -20,5 +21,16 @@ public class Order {
     @GeneratedValue(strategy = AUTO)
     private Integer id;
 
-    // Essayer enumrable string
+    @Enumerated(STRING)
+    private OrderStatus status;
+
+    @ManyToMany
+    @JoinTable(
+        name = "order_product",
+        joinColumns = @JoinColumn(name = "order_id")
+    )
+    private List<Product> products;
+
+    @Column(name = "customer_id")
+    private Integer customerId;
 }

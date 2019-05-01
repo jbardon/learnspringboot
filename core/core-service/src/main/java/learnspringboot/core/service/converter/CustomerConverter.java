@@ -1,10 +1,9 @@
 package learnspringboot.core.service.converter;
 
 import learnspringboot.core.domain.Customer;
-import learnspringboot.core.domain.Order;
 import learnspringboot.core.domain.Product;
 import learnspringboot.core.dto.CustomerDto;
-import learnspringboot.core.dto.OrderDto;
+import learnspringboot.core.dto.CustomerDto;
 import learnspringboot.core.dto.ProductDto;
 import learnspringboot.core.service.converter.utils.View;
 import org.springframework.stereotype.Component;
@@ -17,17 +16,12 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 @Component
-public class OrderConverter {
+public class CustomerConverter {
 
-    private final ProductConverter productConverter;
+    private Map<View, Function<Customer, CustomerDto>> convertTo;
+    private Map<View, BiFunction<CustomerDto, Customer, Customer>> convertFrom;
 
-    private Map<View, BiFunction<Order, CustomerDto, OrderDto>> convertTo;
-    private Map<View, BiFunction<OrderDto, Order, Order>> convertFrom;
-
-    public OrderConverter(final ProductConverter productConverter) {
-
-        this.productConverter = productConverter;
-
+    public CustomerConverter() {
         this.convertTo = new HashMap<>();
         this.convertFrom = new HashMap<>();
 
@@ -35,38 +29,27 @@ public class OrderConverter {
         convertFrom.put(View.NO_VIEW, this::convertFromNoView);
     }
 
-    public OrderDto convertTo(final View view, final Order domain, final Function<Integer, CustomerDto> customerProvider) {
-        CustomerDto customer = customerProvider.apply(domain.getCustomerId());
-        return convertTo.getOrDefault(view, this::convertToNoView).apply(domain, customer);
+    public CustomerDto convertTo(final View view, final Customer domain) {
+        return convertTo.getOrDefault(view, this::convertToNoView).apply(domain);
     }
 
-    public Order convertFrom(final View view, final OrderDto dto, final Order domain) {
+    public Customer convertFrom(final View view, final CustomerDto dto, final Customer domain) {
         return convertFrom.getOrDefault(view, this::convertFromNoView).apply(dto, domain);
     }
 
-    private OrderDto convertToNoView(final Order domain, final CustomerDto customerDto) {
-        final OrderDto dto = new OrderDto();
+    private CustomerDto convertToNoView(final Customer domain) {
+        final CustomerDto dto = new CustomerDto();
         if (domain != null) {
             dto.setId(domain.getId());
-            dto.setStatus(domain.getStatus().name());
-            dto.setCustomer(customerDto);
-            dto.setProducts(mapToProducts(domain.getProducts()));
         }
         return dto;
     }
 
-    private Order convertFromNoView(final OrderDto dto, Order domain) {
+    private Customer convertFromNoView(final CustomerDto dto, Customer domain) {
         if (dto != null) {
             domain.setId(dto.getId());
         }
         return domain;
-    }
-
-
-    private List<ProductDto> mapToProducts(final List<Product> domain) {
-        return domain.stream()
-                .map(p -> productConverter.convertTo(View.NO_VIEW, p))
-                .collect(Collectors.toList());
     }
 
     //map specific command
