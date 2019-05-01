@@ -14,6 +14,7 @@
 
     <properties>
         <version.core>0.0.1-SNAPSHOT</version.core>
+        <version.proxy-shipper>0.0.1-SNAPSHOT</version.proxy-shipper> 
     </properties>
 
     <!--
@@ -47,6 +48,16 @@
                 <groupId>learnspringboot</groupId>
                 <artifactId>core-dao</artifactId>
                 <version>${version.core}</version>
+            </dependency>
+            <dependency>
+                <groupId>learnspringboot</groupId>
+                <artifactId>proxy-shipper-api</artifactId>
+                <version>${version.proxy-shipper}</version>
+            </dependency>
+            <dependency>
+                <groupId>learnspringboot</groupId>
+                <artifactId>proxy-shipper-dto</artifactId>
+                <version>${version.proxy-shipper}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

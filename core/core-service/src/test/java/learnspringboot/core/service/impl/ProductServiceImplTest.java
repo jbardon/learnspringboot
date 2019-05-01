@@ -42,7 +42,6 @@ public class ProductServiceImplTest {
     @Test
     public void findOne() {
         ProductDto result = service.findOne(1);
-
         softly.assertThat(result).isNotNull();
     }
 

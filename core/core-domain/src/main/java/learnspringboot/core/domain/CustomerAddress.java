@@ -3,6 +3,7 @@ package learnspringboot.core.domain;
 import lombok.Getter;
 import lombok.Setter;
 
+import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
 @Embeddable // For @ElementCollection, instead of @Entity
@@ -24,6 +25,7 @@ public class CustomerAddress {
 
     private String street;
 
+    @Column(name = "zipcode")
     private Integer zipCode;
 
     private String city;

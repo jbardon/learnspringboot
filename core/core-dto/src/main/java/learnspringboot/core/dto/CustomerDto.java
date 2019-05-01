@@ -11,9 +11,9 @@ public class CustomerDto {
 
     private Integer id;
 
-    private String firstName;
+    private String firstname;
 
-    private String lastName;
+    private String lastname;
 
     private List<OrderDto> orders;
 

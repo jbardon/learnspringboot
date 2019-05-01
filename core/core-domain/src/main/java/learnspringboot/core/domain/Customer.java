@@ -17,8 +17,10 @@ public class Customer {
     @GeneratedValue(strategy = AUTO)
     private Integer id;
 
+    @Column(name = "firstname")
     private String firstName;
 
+    @Column(name = "lastname")
     private String lastName;
 
     /*

@@ -1,10 +1,11 @@
 package learnspringboot.core.service.converter;
 
 import learnspringboot.core.domain.Customer;
+import learnspringboot.core.domain.CustomerAddress;
+import learnspringboot.core.domain.Order;
 import learnspringboot.core.domain.Product;
+import learnspringboot.core.dto.*;
 import learnspringboot.core.dto.CustomerDto;
-import learnspringboot.core.dto.CustomerDto;
-import learnspringboot.core.dto.ProductDto;
 import learnspringboot.core.service.converter.utils.View;
 import org.springframework.stereotype.Component;
 
@@ -18,10 +19,14 @@ import java.util.stream.Collectors;
 @Component
 public class CustomerConverter {
 
+    private final OrderConverter orderConverter;
+
     private Map<View, Function<Customer, CustomerDto>> convertTo;
     private Map<View, BiFunction<CustomerDto, Customer, Customer>> convertFrom;
 
-    public CustomerConverter() {
+    public CustomerConverter(final OrderConverter orderConverter) {
+        this.orderConverter = orderConverter;
+
         this.convertTo = new HashMap<>();
         this.convertFrom = new HashMap<>();
 
@@ -41,6 +46,10 @@ public class CustomerConverter {
         final CustomerDto dto = new CustomerDto();
         if (domain != null) {
             dto.setId(domain.getId());
+            dto.setFirstname(domain.getFirstName());
+            dto.setLastname(domain.getLastName());
+            dto.setAddresses(mapCustomerAddressToNoView(domain.getAddresses()));
+            dto.setOrders(mapOrdersToNoView(domain.getOrders(), dto));
         }
         return dto;
     }
@@ -48,22 +57,28 @@ public class CustomerConverter {
     private Customer convertFromNoView(final CustomerDto dto, Customer domain) {
         if (dto != null) {
             domain.setId(dto.getId());
+            domain.setFirstName(dto.getFirstname());
+            domain.setLastName(dto.getLastname());
         }
         return domain;
     }
 
-    //map specific command
-    // map exprès providers
-
-        /*
-    private List<ReviewDto> mapReviewsToNoView(final List<Review> domainList) {
+    private List<CustomerAddressDto> mapCustomerAddressToNoView(final List<CustomerAddress> domainList) {
         return domainList.stream()
                 .map(domain -> {
-                    final ReviewDto dto = new ReviewDto();
-                   // dto.setId(domain.getId());
-                    dto.setMessage(domain.getMessage());
+                    final CustomerAddressDto dto = new CustomerAddressDto();
+                    dto.setStreet(domain.getStreet());
+                    dto.setCity(domain.getCity());
+                    dto.setZipCode(domain.getZipCode());
+                    dto.setCountry(domain.getCountry());
                     return dto;
                 }).collect(Collectors.toList());
     }
-    */
+
+    // FIXME: Not sure about passing unfinished CustomerDto
+    private List<OrderDto> mapOrdersToNoView(final List<Order> domainList, final CustomerDto customerDto) {
+        return domainList.stream()
+                .map(domain -> orderConverter.convertTo(View.NO_VIEW, domain, (customerId) -> customerDto))
+                .collect(Collectors.toList());
+    }
 }

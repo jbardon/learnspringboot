@@ -4,32 +4,23 @@
 -- Spring way: schema.sql and data-h2.sql in classpath root (resources)
 --    Can append with database to type to apply only if the current DB matches
 
-INSERT INTO provider (id, name) VALUES
-  (1, 'E.Leclerc'),
-  (2, 'SuperU');
+INSERT INTO product (id, make, name, price) VALUES
+  (1, 'Mir', 'Lessive liquide Mir Raviveur de Blancheur', 4.93),
+  (2, 'Aquafresh', 'Dentifrice Aquafresh Night repair', 1.97),
+  (3, 'Plantation', 'Café en capsule Plantation Cappuccino - x8', 2.84),
+  (4, 'Nos régions ont du talent', 'Fromage Brillat Savarin 38%mg Nos Régions ont du Talent', 2.70),
+  (5, 'Nestea', 'Thé glacé Nestea Thé vert,citron, vert,menthe', 1.50);
 
+INSERT INTO customer (id, firstname, lastname) VALUES
+  (1, 'Jérémy', 'Bardon');
 
-INSERT INTO product (unique_id, manufacturer, full_name, price, provider_id) VALUES
-  (1, 'Mir', 'Lessive liquide Mir Raviveur de Blancheur', 4.93, 1),
-  (2, 'Aquafresh', 'Dentifrice Aquafresh Night repair', 1.97, 1),
-  (3, 'Plantation', 'Café en capsule Plantation Cappuccino - x8', 2.84, 1),
-  (4, 'Nos régions ont du talent', 'Fromage Brillat Savarin 38%mg Nos Régions ont du Talent', 2.70, 2),
-  (5, 'Nestea', 'Thé glacé Nestea Thé vert,citron, vert,menthe', 1.50, 2);
+INSERT INTO customer_address (customer_id, street, zipcode, city, country) VALUES
+  (1, '12 rue des Roses', '44000', 'Nantes', 'FR');
 
-/*
-With @OneToMany
-INSERT INTO review (id, message, product_id) VALUES
-  (1, 'Bien', 1),
-  (2, 'Mauvais', 1),
-  (3, 'Trop cher', 1);
-*/
+INSERT INTO orders (id, status, customer_id) VALUES
+  (1, 'PENDING', 1);
 
--- With @ElementCollection
-INSERT INTO review (product_id, message) VALUES
-  (1, 'Bien'),
-  (1, 'Mauvais'),
-  (1, 'Trop cher');
-
-
-
-
+INSERT INTO orders_products(order_id, product_id) VALUES
+  (1, 1),
+  (1, 3),
+  (1, 4);
