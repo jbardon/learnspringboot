@@ -2,8 +2,6 @@ package learnspringboot.core;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 /* Shorcut for 3 annotation
    - @Configuration
@@ -14,8 +12,8 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
    to enable component scan for all classes under learnspring.core package
 */
 @SpringBootApplication
-public class CoreApiApplication {
+public class CoreApplication {
 	public static void main(String[] args) {
-		SpringApplication.run(CoreApiApplication.class, args);
+		SpringApplication.run(CoreApplication.class, args);
 	}
 }

@@ -9,7 +9,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 // UT don't need the Spring Context so it's really unitary and fast
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class CoreApiApplicationTests {
+public class CoreApplicationTests {
 
 	@Test
 	public void contextLoads() {
