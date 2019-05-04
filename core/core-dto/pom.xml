@@ -17,4 +17,12 @@
     <properties>
         <spring-boot.repackage.skip>true</spring-boot.repackage.skip>
     </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>learnspringboot</groupId>
+            <artifactId>proxy-shipper-dto</artifactId>
+        </dependency>
+    </dependencies>
+
 </project>

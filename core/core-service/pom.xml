@@ -23,14 +23,28 @@
             <groupId>learnspringboot</groupId>
             <artifactId>core-dto</artifactId>
         </dependency>
+
         <dependency>
             <groupId>learnspringboot</groupId>
             <artifactId>core-domain</artifactId>
         </dependency>
+
         <dependency>
             <groupId>learnspringboot</groupId>
             <artifactId>core-dao</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>learnspringboot</groupId>
+            <artifactId>proxy-shipper-dto</artifactId>
+        </dependency>
+
+        <!--
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+        </dependency>
+        -->
 
         <dependency>
             <groupId>com.querydsl</groupId>

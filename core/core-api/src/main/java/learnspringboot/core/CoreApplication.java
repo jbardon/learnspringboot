@@ -2,6 +2,7 @@ package learnspringboot.core;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 
 /* Shorcut for 3 annotation
    - @Configuration
@@ -12,6 +13,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
    to enable component scan for all classes under learnspring.core package
 */
 @SpringBootApplication
+@EnableFeignClients // Implement @FeignClient interfaces to perform rest calls
 public class CoreApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(CoreApplication.class, args);

@@ -27,9 +27,10 @@ public class Customer {
         First way: not very coupled, reviews can exist without a product
         Must specify cascade and orphan attribute to decide operation propagation (such as delete)
     */
-    @OneToMany
-    @JoinColumn(name = "customer_id")
-    private List<Order> orders;
+    // FIXME: Infinite recursion Get Order -> Customer -> Orders -> Customer
+    //@OneToMany
+    //@JoinColumn(name = "customer_id")
+    //private List<Order> orders;
 
     /*
         Second way: tightly coupled, a review cannot exist without a product

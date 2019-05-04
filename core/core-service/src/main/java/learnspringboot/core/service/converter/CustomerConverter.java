@@ -49,7 +49,8 @@ public class CustomerConverter {
             dto.setFirstname(domain.getFirstName());
             dto.setLastname(domain.getLastName());
             dto.setAddresses(mapCustomerAddressToNoView(domain.getAddresses()));
-            dto.setOrders(mapOrdersToNoView(domain.getOrders(), dto));
+            // FIXME: Infinite recursion Get Order -> Customer -> Orders -> Customer
+            //dto.setOrders(mapOrdersToNoView(domain.getOrders(), dto));
         }
         return dto;
     }

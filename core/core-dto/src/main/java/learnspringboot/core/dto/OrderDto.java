@@ -1,5 +1,6 @@
 package learnspringboot.core.dto;
 
+import learnspringboot.proxyshipper.dto.ShipmentDto;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -16,4 +17,7 @@ public class OrderDto {
     private List<ProductDto> products;
 
     private CustomerDto customer;
+
+    // FIXME: Must convert response from proxy-shipper
+    private ShipmentDto shipment;
 }

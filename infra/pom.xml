@@ -11,7 +11,6 @@
 
     <artifactId>infra-parent</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>pom</packaging>
 
     <name>Infra</name>
     <description>Spring Cloud infrastructure</description>
@@ -19,6 +18,18 @@
     <properties>
         <bom.version>0.0.1-SNAPSHOT</bom.version>
     </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>learnspringboot</groupId>
+                <artifactId>project-bom</artifactId>
+                <version>${bom.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <modules>
         <module>config-server</module>

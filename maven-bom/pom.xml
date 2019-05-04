@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>maven-bom</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+
+    <name>Maven BOM</name>
+    <description>BOM for internal and external dependencies</description>
+
+    <modules>
+        <!-- External deps -->
+        <module>parent-pom</module>
+
+        <!-- Internal (projects) deps-->
+        <module>project-bom</module>
+    </modules>
+</project>

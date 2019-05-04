@@ -4,4 +4,6 @@ import learnspringboot.core.dto.OrderDto;
 
 public interface OrderService {
     OrderDto findOne(final int id);
+
+    OrderDto getWithShipment(final int id);
 }

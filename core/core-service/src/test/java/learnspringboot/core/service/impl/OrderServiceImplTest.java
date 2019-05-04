@@ -4,6 +4,7 @@ import learnspringboot.core.dao.OrderRepository;
 import learnspringboot.core.dto.OrderDto;
 import learnspringboot.core.service.CustomerService;
 import learnspringboot.core.service.OrderService;
+import learnspringboot.core.service.client.ProxyShipperClient;
 import learnspringboot.core.service.converter.OrderConverter;
 import org.assertj.core.api.JUnitSoftAssertions;
 import org.junit.Before;
@@ -19,7 +20,8 @@ public class OrderServiceImplTest {
 
     @Before
     public void setUp() {
-        service = new OrderServiceImpl(mock(OrderRepository.class), mock(OrderConverter.class), mock(CustomerService.class));
+        service = new OrderServiceImpl(mock(OrderRepository.class), mock(OrderConverter.class),
+                mock(CustomerService.class), mock(ProxyShipperClient.class));
         softly = new JUnitSoftAssertions();
     }
 

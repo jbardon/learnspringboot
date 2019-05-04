@@ -94,6 +94,12 @@
             <version>${version.lombok}</version>
         </dependency>
 
+        <!-- Feign client for all projects (@EnableFeignClients and @FeignClient) -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
+        </dependency>
+
         <!--
             Fetching remote config with Spring Cloud Config
             see infra/config-server/src/main/resources/configs

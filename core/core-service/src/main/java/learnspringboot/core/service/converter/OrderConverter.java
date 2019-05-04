@@ -1,6 +1,5 @@
 package learnspringboot.core.service.converter;
 
-import learnspringboot.core.domain.Customer;
 import learnspringboot.core.domain.Order;
 import learnspringboot.core.domain.Product;
 import learnspringboot.core.dto.CustomerDto;
@@ -35,8 +34,14 @@ public class OrderConverter {
         convertFrom.put(View.NO_VIEW, this::convertFromNoView);
     }
 
-    public OrderDto convertTo(final View view, final Order domain, final Function<Integer, CustomerDto> customerProvider) {
-        CustomerDto customer = customerProvider.apply(domain.getCustomerId());
+    public OrderDto convertTo(final View view, final Order domain,
+                              final Function<Integer, CustomerDto> customerProvider)
+                              //final Function<Integer, ShipmentDto> shipmentProvider)
+    {
+        final CustomerDto customer = customerProvider.apply(domain.getCustomerId());
+
+        // Troubles, comment faire ? Pas de TriFunction
+        //final ShipmentDto shipment = shipmentProvider.apply(domain.getId());
         return convertTo.getOrDefault(view, this::convertToNoView).apply(domain, customer);
     }
 
@@ -44,7 +49,8 @@ public class OrderConverter {
         return convertFrom.getOrDefault(view, this::convertFromNoView).apply(dto, domain);
     }
 
-    private OrderDto convertToNoView(final Order domain, final CustomerDto customerDto) {
+    private OrderDto convertToNoView(final Order domain,
+                                     final CustomerDto customerDto) {
         final OrderDto dto = new OrderDto();
         if (domain != null) {
             dto.setId(domain.getId());

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
@@ -23,8 +24,19 @@ public class OrderApi {
 
     @RequestMapping(method = GET, path = "/{id}")
     public ResponseEntity<OrderDto> findOne (
-        @PathVariable final int id
+        @PathVariable
+        final int id,
+        @RequestParam(value = "shipment", required = false)
+        final boolean withShipment
     ) {
-        return ResponseEntity.ok(service.findOne(id));
+        final OrderDto order = withShipment
+                ? service.getWithShipment(id)
+                : service.findOne(id);
+
+        if (order != null) {
+            return ResponseEntity.ok(order);
+        }
+
+        return ResponseEntity.notFound().build();
     }
 }
