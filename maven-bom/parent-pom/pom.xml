@@ -70,6 +70,7 @@
             It's only gathering required dependencies for a feature
             They also handles external dependencies versions and compatibilities
         -->
+
         <!-- Automatic health check endpoint -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -94,12 +95,6 @@
             <version>${version.lombok}</version>
         </dependency>
 
-        <!-- Feign client for all projects (@EnableFeignClients and @FeignClient) -->
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-openfeign</artifactId>
-        </dependency>
-
         <!--
             Fetching remote config with Spring Cloud Config
             see infra/config-server/src/main/resources/configs
@@ -107,6 +102,23 @@
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-config</artifactId>
+        </dependency>
+
+        <!--
+            Fetching services addresses from Eureka registry
+            mainly for Feign clients
+
+            Auto-register apps in the registry and gives ability to be a client
+        -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+        </dependency>
+
+        <!-- Feign client for all projects (@EnableFeignClients and @FeignClient) -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
         </dependency>
 
         <dependency>

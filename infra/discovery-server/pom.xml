@@ -9,15 +9,15 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>config-server</artifactId>
+	<artifactId>discovery-server</artifactId>
 
-	<name>Config server</name>
-	<description>Remote configuration service using Spring Cloud</description>
+	<name>Discovery server</name>
+	<description>Using Spring Cloud Netflix Eureka</description>
 
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-config-server</artifactId>
+			<artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
 		</dependency>
 	</dependencies>
 </project>

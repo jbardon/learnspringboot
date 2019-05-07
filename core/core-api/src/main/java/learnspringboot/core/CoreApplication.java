@@ -2,6 +2,8 @@ package learnspringboot.core;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 
 /* Shorcut for 3 annotation
@@ -14,6 +16,12 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 */
 @SpringBootApplication
 @EnableFeignClients // Implement @FeignClient interfaces to perform rest calls
+
+/*
+	Register itself to the Discovery server (same as @EnableEurekaClient)
+	Now optional when classpath includes: spring-cloud-starter-netflix-eureka-client
+*/
+// @EnableDiscoveryClient
 public class CoreApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(CoreApplication.class, args);
