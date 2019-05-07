@@ -3,9 +3,9 @@ package learnspringboot.core.service.converter;
 import learnspringboot.core.domain.Customer;
 import learnspringboot.core.domain.CustomerAddress;
 import learnspringboot.core.domain.Order;
-import learnspringboot.core.domain.Product;
-import learnspringboot.core.dto.*;
+import learnspringboot.core.dto.CustomerAddressDto;
 import learnspringboot.core.dto.CustomerDto;
+import learnspringboot.core.dto.OrderDto;
 import learnspringboot.core.service.converter.utils.View;
 import org.springframework.stereotype.Component;
 

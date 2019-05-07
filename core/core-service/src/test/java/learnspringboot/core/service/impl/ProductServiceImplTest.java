@@ -8,7 +8,6 @@ import learnspringboot.core.service.converter.ProductConverter;
 import org.assertj.core.api.JUnitSoftAssertions;
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.Mock;
 
 import java.util.List;
 

@@ -3,7 +3,6 @@ package learnspringboot.core.service.impl;
 import learnspringboot.core.dao.CustomerRepository;
 import learnspringboot.core.dto.CustomerDto;
 import learnspringboot.core.service.CustomerService;
-import learnspringboot.core.service.CustomerService;
 import learnspringboot.core.service.converter.CustomerConverter;
 import org.assertj.core.api.JUnitSoftAssertions;
 import org.junit.Before;
