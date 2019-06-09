@@ -4,6 +4,7 @@
 - Zuul
 - Security
 - Spring boot admin
+- Hot reload
 
 
 curl https://start.spring.io/starter.zip \\
