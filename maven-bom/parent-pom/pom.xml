@@ -26,7 +26,7 @@
     <properties>
         <java.version>1.8</java.version>
         <version.lombok>1.18.6</version.lombok>
-        <version.h2>1.4.199</version.h2>
+        <version.h2>2.0.206</version.h2>
         <version.querydsl>4.2.1</version.querydsl>
         <version.springboot-cloud>Greenwich.RELEASE</version.springboot-cloud>
 
